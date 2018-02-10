@@ -2,17 +2,19 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
+from django.shortcuts import redirect
 from django.template import loader
 import os
 import json
 
 
-dirpath = os.path.dirname(os.path.realpath(__file__))
-with open(dirpath + '/../database.json') as src:
-    db = json.load(src)
+
 
 @csrf_exempt
 def index(request):
+    dirpath = os.path.dirname(os.path.realpath(__file__))
+    with open(dirpath + '/../database.json') as src:
+        db = json.load(src)
     if request.method=="POST":
         if "user_name" in request.POST:
             myName = request.POST['user_name']
@@ -34,6 +36,7 @@ def index(request):
             db['height_inches'] = height_inches
             db['hair_color'] = hair_color
             template = loader.get_template("onboard2.html")
+            return redirect('/configurations')
 
         with open(dirpath + '/../database.json', 'w+') as outfile:
             json.dump(db, outfile)
@@ -49,8 +52,12 @@ def onboard2(request):
     template = loader.get_template("onboard2.html")
     return HttpResponse(template.render())
 def onboard3(request):
+    dirpath = os.path.dirname(os.path.realpath(__file__))
+    with open(dirpath + '/../database.json') as src:
+        db = json.load(src)
+
     template = loader.get_template("onboard3.html")
-    return HttpResponse(template.render())
+    return HttpResponse(template.render({'contact': db['friendsNumbers'][0]}))
 def landing(request):
     template = loader.get_template("landing.html")
     return HttpResponse(template.render())
@@ -58,5 +65,8 @@ def my_info(request):
     template = loader.get_template("my_info.html")
     return HttpResponse(template.render())
 def contacts(request):
+    dirpath = os.path.dirname(os.path.realpath(__file__))
+    with open(dirpath + '/../database.json') as src:
+        db = json.load(src)
     template = loader.get_template("contacts.html")
-    return HttpResponse(template.render())
+    return HttpResponse(template.render({'contact': db['friendsNumbers'][0]}))

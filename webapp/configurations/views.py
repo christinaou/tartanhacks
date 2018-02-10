@@ -48,14 +48,14 @@ def determineTrigger(text):
     for trigger in db['triggers']['emergency']:
         if trigger['word'] in text:
             print('Trigger ' + trigger['word'] + ' calling ' + db['emergencyNumber'])
-            # call.main(emergencyNumber)
+            call.main(emergencyNumber)
             for num in friendsNumbers:
                 print('texting ' + num)
                 sms.main(num, db['myName'])
     for trigger in db['triggers']['social']:
         if trigger['word'] in text:
             print('Trigger ' + trigger['word'] + ' calling ' + db['myNumber'])
-            # call.main(myNumber)
+            call.main(myNumber)
 
 @csrf_exempt
 def compute(request):
