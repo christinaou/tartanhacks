@@ -21,5 +21,4 @@ urlpatterns = [
     path('configurations/', include('configurations.urls')),
     path('recording/', include('recording.urls')),
     path('admin/', admin.site.urls),
-    path('',views.index)
-]
+    path('',views.index)]
