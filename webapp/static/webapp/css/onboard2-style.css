@@ -1,11 +1,7 @@
-a, a:hover, a:active, a:visited, a:focus {
-  text-decoration:none;
-}
-
 .front_bg{
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-color: white;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: white;
 }
 
 .top-bar{
@@ -36,12 +32,29 @@ h1 {
   font-size: 16pt;
 }
 
+h2 {
+  font-family: Trebuchet MS;
+  font-size: 22px;
+  font-weight: bold;
+  border-color: #9013FE;
+  border-style: solid;
+  border-width: 0 0 0 2px;
+}
+
 .main-section {
   padding: 0 5% 0 5%;
 }
 
 .heading {
-  margin: 10% 0 5% 0;
+  margin: 10% 0 8% 0;
+}
+
+.sub-heading {
+  padding: 0 0 0 10px;
+}
+
+.indented {
+  margin: 0 12px 0 12px;
 }
 
 .desc {
@@ -52,7 +65,11 @@ h1 {
 }
 
 .subtitle {
-  margin: 8% 0 4% 0;
+  margin: 4% 0 4% 0;
+}
+
+.space {
+  height: 10px;
 }
 
 #alert_img {
@@ -66,7 +83,7 @@ h1 {
 .form-group {
   display: flex;
   flex-direction: column;
-  margin: 10% 0;
+  margin: 5% 0 7% 0;
 }
 
 .form-group label {
