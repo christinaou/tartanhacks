@@ -11,3 +11,6 @@ def index(request):
 def onboard(request):
     template = loader.get_template("onboard.html")
     return HttpResponse(template.render())
+def onboard3(request):
+    template = loader.get_template("onboard3.html")
+    return HttpResponse(template.render())
