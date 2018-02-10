@@ -1,7 +1,11 @@
+a, a:hover, a:active, a:visited, a:focus {
+  text-decoration:none;
+}
+
 .front_bg{
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-color: white;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: white;
 }
 
 .top-bar{
@@ -14,6 +18,7 @@
   color: white;
   font-family: Trebuchet MS;
   font-size: 16pt;
+  text-decoration: none;
 }
 
 .top-bar {

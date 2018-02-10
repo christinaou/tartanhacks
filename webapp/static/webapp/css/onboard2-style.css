@@ -1,7 +1,7 @@
 .front_bg{
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-color: white;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: white;
 }
 
 .top-bar{
@@ -32,12 +32,29 @@ h1 {
   font-size: 16pt;
 }
 
+h2 {
+  font-family: Trebuchet MS;
+  font-size: 22px;
+  font-weight: bold;
+  border-color: #9013FE;
+  border-style: solid;
+  border-width: 0 0 0 2px;
+}
+
 .main-section {
   padding: 0 5% 0 5%;
 }
 
 .heading {
-  margin: 10% 0;
+  margin: 10% 0 8% 0;
+}
+
+.sub-heading {
+  padding: 0 0 0 10px;
+}
+
+.indented {
+  margin: 0 12px 0 12px;
 }
 
 .desc {
@@ -47,11 +64,27 @@ h1 {
   letter-spacing: 0;
 }
 
-
 .subtitle {
-  margin: 10% 0;
+  margin: 4% 0 4% 0;
 }
 
+.space {
+  height: 10px;
+}
+
+#alert_img {
+  width: 90%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin: 5% 0 7% 0;
+}
 
 .form-group label {
   font-family: TrebuchetMS-Bold;
@@ -59,11 +92,15 @@ h1 {
   margin: 0 0 5px 0;
 }
 
+.form-group input {
+  border-color: black;
+  border-width: 0 0 1px 0;
+  font-family: TrebuchetMS;
+  font-size: 16px;
+  outline: none;
+}
 
-.form-group {
-  display: flex;
-  flex-direction: column;
-  margin: 5% 0;
+.form-group form {
   border-color: black;
   border-style: solid;
   border-width: 0 0 1px 0;
@@ -79,10 +116,6 @@ form select {
   width: 100%;
 }
 
-form input {
-  width: 100%;
-}
-
 #height-form {
   display: flex;
 
@@ -90,4 +123,11 @@ form input {
 
 #height-form .form-group {
   flex-grow: 1;
+}
+
+.add-another {
+  font-family: TrebuchetMS;
+  color: #9013FE;
+  font-size: 16px;
+  text-align: center;
 }
