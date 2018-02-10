@@ -19,6 +19,8 @@ def index(request):
         with open(dirpath + '/../database.json', 'w+') as outfile:
             json.dump(db, outfile)
         print(myName)
+        template = loader.get_template("onboard.html")
+        return HttpResponse(template.render())
 
     template = loader.get_template("index.html")
     return HttpResponse(template.render())

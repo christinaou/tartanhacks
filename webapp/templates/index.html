@@ -30,18 +30,18 @@
     To begin, tell us your name.
 	</div>
 
-  <form method="post">
+  <form method="post" id="name_form">
   	<div class="name_box">
       <input name="user_name" type="text" placeholder="First last"></input>
   	</div>
 
   	<div class="container">
       <!-- <button type="submit" class="start_button"><a href="onboard">Let's do this</a></button> -->
-      <a href="onboard" class="start_button" onclick="document.forms[0].submit(); console.log(document.forms[0])">submit</a>
+      <!-- <a href="onboard" class="start_button" onclick="document.getElementById('name_form').submit();)">submit</a> -->
 
 
       <!-- <a href="/onboard"><input type="submit" id="start_button" name="button" value="let's do this"></a> -->
-  		<!-- <button type="submit" id="start_button" onclick="location.href='onboard';">Let's do this</button> -->
+  		<input type="submit" id="start_button">Let's do this</input>
   	</div>
   </form>
 
