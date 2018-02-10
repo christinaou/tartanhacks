@@ -10,10 +10,9 @@ var mic, recorder, soundFile;
 var state = 0; // mousePress will increment from Record, to Stop, to Play
 var timeSilent = 0;
 var noSoundTime = 100;
-var micThreshold = .002;
+var micThreshold = .15; // Laptop .01, phone .002
 function setup() {
   createCanvas(400,400);
-  // frameRate(30);
   // create an audio in
   mic = new p5.AudioIn();
 

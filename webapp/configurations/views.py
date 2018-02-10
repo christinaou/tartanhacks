@@ -10,12 +10,26 @@ from dataview import DataView
 
 triggers = [
     {
-        'number': 9492059539,
+        'number': "9492059539",
         'word': "apple",
         'type': "call",
         'id':0
+    },
+    {
+        'number': "9492059539",
+        'word': "i have a boyfriend",
+        'type': "call",
+        'id':0
+    },
+    {
+        'number': None,
+        'word': "blackberry",
+        'type': "receive",
+        'id':1
     }
 ]
+
+myNumber = "9085469708"
 
 @csrf_exempt
 def index(request):
@@ -41,23 +55,24 @@ def index(request):
     template = loader.get_template("configurations/index.html")
     return HttpResponse(template.render({'triggers':triggers}))
 
+def determineTrigger(text):
+    for trigger in triggers:
+        if trigger['word'] in text:
+            if trigger['type'] == 'call':
+                print('Trigger ' + trigger['word'] + ' calling ' + trigger['number'])
+                # call.main(trigger['number'])
+            elif trigger['type'] == 'receive':
+                print('Trigger ' + trigger['word'] + ' receiving to ' + myNumber)
+                # call.main(myNumber)
+
 @csrf_exempt
 def compute(request):
     if request.method == 'POST':
-        # print(request)
-        # print(request.POST)
-        # if "filee" in request.POST:
-        #     print("found!!!")
-        #     print(request.POST["filee"])
-        #     print(type(request.POST["filee"]))
-        # else:
-        #     print("not :(((")
         if len(request.FILES):
-            print(request.FILES)
             fileObj = request.FILES['filee']
-            print(fileObj)
-            print(type(fileObj))
-            stt.main(fileObj)
+            text = stt.main(fileObj)
+            if (text):
+                determineTrigger(text)
         else:
             print("no file")
     return HttpResponse("wei")
