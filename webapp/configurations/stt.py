@@ -12,7 +12,8 @@ def main(audio_file):
     with sr.AudioFile(audio_file) as source:
         audio = r.record(source)  # read the entire audio file
     try:
-        print("Google Voice Recognition thinks you said " + r.recognize_google(audio))
+        print("Google Voice Recognition thinks you said \n'" + 
+            r.recognize_google(audio) + "'")
     except sr.UnknownValueError:
         print("Google Voice Recognition could not understand audio")
     except sr.RequestError as e:

@@ -1,10 +1,17 @@
 var mic, recorder, soundFile;
 
-var state = 0; // mousePress will increment from Record, to Stop, to Play
+/**
+ * States needed:
+ * 0 Starting state, wait till first sound > threshold
+ * 1 No sound, increment timeSilent, wait till timeSilent > noSoundTime
+ * 2 Send sound file, go back to 0
+ */
 
+var state = 0; // mousePress will increment from Record, to Stop, to Play
+var timeSilent = 0;
+var noSoundTime = 2000;
 function setup() {
   createCanvas(400,400);
-  
 
   // create an audio in
   mic = new p5.AudioIn();
@@ -23,8 +30,8 @@ function setup() {
 }
 
 function draw() {
-  background(200);
   fill(0);
+  background(200);  
   micLevel = mic.getLevel();
   text('Mic volume: ' + str(micLevel), 20, 40);
 
@@ -32,40 +39,43 @@ function draw() {
     fill(0,255,0);
   }
   rect(20,60,50,50);
+
+  if (state == 0) {
+    fill(0);
+    text('Just started. Click to start recording.', 20, 20);
+  }
+  if (state == 1) {
+    fill(0);
+    text('Recording now! Click to stop.', 20, 20);
+    fill(255,0,0);
+    ellipse(200,100,50,50);
+  } else if (state == 2) {
+    fill(0);
+    text('Recording stopped. Click to play & save', 20, 20);
+    fill(0,255,0);
+    ellipse(200,100,50,50);
+  }
 }
 
-function mousePressed() {
+function touchStarted() {
   // use the '.enabled' boolean to make sure user enabled the mic (otherwise we'd record silence)
   if (state === 0 && mic.enabled) {
-
     // Tell recorder to record to a p5.SoundFile which we will use for playback
     recorder.record(soundFile);
-
-    fill(255,0,0);
-    ellipse(100,100,50,50);
-    text('Recording now! Click to stop.', 20, 20);
-    // state++;
   }
 
   else if (state === 1) {
     recorder.stop(); // stop recorder, and send the result to soundFile
-
-    fill(0,255,0);
-    ellipse(100,100,50,50);
-    text('Recording stopped. Click to play & save', 20, 20);
-    // state++;
   }
 
   else if (state === 2) {
     soundFile.play(); // play the result!
     var fileName = 'mySound.wav';
-    // maveSound(soundFile, fileName); // save file
-    // state++;
     postFile(soundFile, fileName);
   }
 }
 
-function mouseReleased() {
+function touchEnded() {
   state = (state + 1) % 3;
 }
 
