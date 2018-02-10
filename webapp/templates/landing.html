@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  {% load static %}
+  <script type="text/javascript" src="{% static 'webapp/js/bootstrap.min.js' %}"></script>
+  <link rel="stylesheet" href="{% static 'webapp/css/bootstrap-theme.min.css' %}">
+  <link rel="stylesheet" href="{% static 'webapp/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'webapp/css/landing-style.css' %}">
+  <title>Index</title>
+</head>
+<body class="front_bg">
+
+    <div class="shield">
+    <img id="shield_img", src="../static/webapp/imgs/shield.svg">
+  </div>
+
+  <div class="logo">
+    EQUERRY
+    </div>
+
+    <div class="slogan">
+    Safety is a walk away.
+    </div>
+
+    <div class="name">
+    To begin, tell us your name.
+    </div>
+
+    <div class="name_box">
+    <input type="text" placeholder="First last"></input>
+    </div>
+
+    <div class="container">
+        <button id="start_button">Let's do this</button>
+    </div>
+
+</body>
+</html>
