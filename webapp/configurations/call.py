@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from twilio.rest import Client
 
 def main(number):
@@ -13,3 +14,6 @@ def main(number):
 	)
 
 	print(call.sid)
+=======
+
+>>>>>>> 53645ca9a628785fc833130bd8b2a939d4b6bd25
