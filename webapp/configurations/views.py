@@ -36,6 +36,8 @@ def index(request):
                 'type': trigger_type,
                 'id': len(triggers)
             })
+            print("Added trigger, so triggers: ",end="")
+            print(triggers)
     template = loader.get_template("configurations/index.html")
     return HttpResponse(template.render({'triggers':triggers}))
 

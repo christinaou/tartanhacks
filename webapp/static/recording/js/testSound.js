@@ -10,7 +10,7 @@ var mic, recorder, soundFile;
 var state = 0; // mousePress will increment from Record, to Stop, to Play
 var timeSilent = 0;
 var noSoundTime = 100;
-var micThreshold = .02;
+var micThreshold = .002;
 function setup() {
   createCanvas(400,400);
   // frameRate(30);
@@ -51,14 +51,16 @@ function draw() {
   }
   else if (state == 1) {
     fill(0);
-    text('No speech?', 20, 20);
+    text('Recording!', 20, 20);
     fill(255,0,0);
-    ellipse(200,100,50,50);
+    
     if (timeSilent > noSoundTime) {
       console.log('stop record!');
       state += 1;
       timeSilent = 0;
+      fill(0,255,0);
     }
+    ellipse(200,100,50,50);
     if (timeSilent % 1000 == 0) {
       console.log(timeSilent);
     }
@@ -76,7 +78,7 @@ function draw() {
     ellipse(200,100,50,50);
     recorder.stop();
     var fileName = 'mySound.wav';
-    // postFile(soundFile, fileName);
+    postFile(soundFile, fileName);
     soundFile = new p5.SoundFile();
     state = (state + 1) % 3;
   }
@@ -209,6 +211,6 @@ function mySaveSound(soundFile, name) {
     view.setInt16(index, interleaved[i] * (32767 * volume), true);
     index += 2;
   }
-  p5.prototype.writeFile([view], name, 'wav');
+  // p5.prototype.writeFile([view], name, 'wav');
   return view;
 };
