@@ -1,11 +1,18 @@
 var mic, recorder, soundFile;
 
-var state = 0; // mousePress will increment from Record, to Stop, to Play
+/**
+ * States needed:
+ * 0 Starting state, wait till first sound > threshold
+ * 1 No sound, increment timeSilent, wait till timeSilent > noSoundTime
+ * 2 Send sound file, go back to 0
+ */
 
+var state = 0; // mousePress will increment from Record, to Stop, to Play
+var timeSilent = 0;
+var noSoundTime = 100;
+var micThreshold = .15; // Laptop .01, phone .002
 function setup() {
   createCanvas(400,400);
-  
-
   // create an audio in
   mic = new p5.AudioIn();
 
@@ -23,51 +30,77 @@ function setup() {
 }
 
 function draw() {
-  background(200);
   fill(0);
+  background(200);  
   micLevel = mic.getLevel();
   text('Mic volume: ' + str(micLevel), 20, 40);
 
-  if (micLevel > 0.001) {
+  if (micLevel > micThreshold) {
     fill(0,255,0);
   }
   rect(20,60,50,50);
-}
-
-function mousePressed() {
-  // use the '.enabled' boolean to make sure user enabled the mic (otherwise we'd record silence)
-  if (state === 0 && mic.enabled) {
-
-    // Tell recorder to record to a p5.SoundFile which we will use for playback
-    recorder.record(soundFile);
-
+  if (state == 0) {
+    fill(0);
+    text('Just started. Speak to start recording.', 20, 20);
+    if (micLevel > micThreshold) {
+      console.log('record!');
+      recorder.record(soundFile);
+      state += 1;
+    }
+  }
+  else if (state == 1) {
+    fill(0);
+    text('Recording!', 20, 20);
     fill(255,0,0);
-    ellipse(100,100,50,50);
-    text('Recording now! Click to stop.', 20, 20);
-    // state++;
-  }
-
-  else if (state === 1) {
-    recorder.stop(); // stop recorder, and send the result to soundFile
-
+    
+    if (timeSilent > noSoundTime) {
+      console.log('stop record!');
+      state += 1;
+      timeSilent = 0;
+      fill(0,255,0);
+    }
+    ellipse(200,100,50,50);
+    if (timeSilent % 1000 == 0) {
+      console.log(timeSilent);
+    }
+    if (micLevel < micThreshold) {
+      timeSilent += 1;
+    }
+    if (micLevel >micThreshold) {
+      timeSilent = 0;
+    }
+  } 
+  else if (state == 2) {
+    fill(0);
+    text('Sending!', 20, 20);
     fill(0,255,0);
-    ellipse(100,100,50,50);
-    text('Recording stopped. Click to play & save', 20, 20);
-    // state++;
-  }
-
-  else if (state === 2) {
-    soundFile.play(); // play the result!
+    ellipse(200,100,50,50);
+    recorder.stop();
     var fileName = 'mySound.wav';
-    // maveSound(soundFile, fileName); // save file
-    // state++;
     postFile(soundFile, fileName);
+    soundFile = new p5.SoundFile();
+    state = (state + 1) % 3;
   }
 }
 
-function mouseReleased() {
-  state = (state + 1) % 3;
-}
+// function touchStarted() {
+//   // use the '.enabled' boolean to make sure user enabled the mic (otherwise we'd record silence)
+//   if (state === 0 && mic.enabled) {
+//     // Tell recorder to record to a p5.SoundFile which we will use for playback
+//     recorder.record(soundFile);
+//   }
+
+//   else if (state === 1) {
+//     recorder.stop(); // stop recorder, and send the result to soundFile
+//   }
+
+//   else if (state === 2) {
+//     soundFile.play(); // play the result!
+//     var fileName = 'mySound.wav';
+//     postFile(soundFile, fileName);
+//   }
+// }
+
 
 function upload(postUrl, file) {
   var formData = new FormData();
@@ -177,6 +210,6 @@ function mySaveSound(soundFile, name) {
     view.setInt16(index, interleaved[i] * (32767 * volume), true);
     index += 2;
   }
-  p5.prototype.writeFile([view], name, 'wav');
+  // p5.prototype.writeFile([view], name, 'wav');
   return view;
 };
