@@ -132,6 +132,8 @@ form select {
   color: #9013FE;
   font-size: 16px;
   text-align: center;
+  -webkit-appearance: none;
+  border: 0;
 }
 
 .phrase-text {
