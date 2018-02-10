@@ -9,8 +9,8 @@ var mic, recorder, soundFile;
 
 var state = 0; // mousePress will increment from Record, to Stop, to Play
 var timeSilent = 0;
-var noSoundTime = 2000;
-var micThreshold = .001;
+var noSoundTime = 100;
+var micThreshold = .02;
 function setup() {
   createCanvas(400,400);
   // frameRate(30);
@@ -40,11 +40,11 @@ function draw() {
     fill(0,255,0);
   }
   rect(20,60,50,50);
-
   if (state == 0) {
     fill(0);
     text('Just started. Speak to start recording.', 20, 20);
-    if (mcLevel > micThreshold) {
+    if (micLevel > micThreshold) {
+      console.log('record!');
       recorder.record(soundFile);
       state += 1;
     }
@@ -55,10 +55,19 @@ function draw() {
     fill(255,0,0);
     ellipse(200,100,50,50);
     if (timeSilent > noSoundTime) {
+      console.log('stop record!');
       state += 1;
       timeSilent = 0;
     }
-    timeSilent += 1;
+    if (timeSilent % 1000 == 0) {
+      console.log(timeSilent);
+    }
+    if (micLevel < micThreshold) {
+      timeSilent += 1;
+    }
+    if (micLevel >micThreshold) {
+      timeSilent = 0;
+    }
   } 
   else if (state == 2) {
     fill(0);
@@ -67,7 +76,7 @@ function draw() {
     ellipse(200,100,50,50);
     recorder.stop();
     var fileName = 'mySound.wav';
-    postFile(soundFile, fileName);
+    // postFile(soundFile, fileName);
     soundFile = new p5.SoundFile();
     state = (state + 1) % 3;
   }
