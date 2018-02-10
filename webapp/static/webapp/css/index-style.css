@@ -1,0 +1,71 @@
+.name {
+	color: white;
+	font-size: 50px;
+  font-weight: normal;
+	margin:0;
+  padding:0;
+  padding-right: 35px;
+  padding-top: 32px;
+  text-align: center;
+}
+
+.name_box {
+	border-bottom: 1px solid white;
+	color: gray;
+	font-size: 50px;
+  font-weight: normal;
+	margin:0;
+  padding:0;
+  padding-right: 35px;
+  padding-top: 32px;
+  text-align: center;
+}
+
+.front_bg{
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-color: #191970;
+}
+
+.logo {
+	color: white;
+	font-size: 80px;
+  font-weight: normal;
+	margin:0;
+  padding:0;
+  padding-right: 35px;
+  padding-top: 32px;
+  text-align: center;
+}
+
+.shield_img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+
+.slogan {
+	color: white;
+	font-size: 50px;
+  font-weight: normal;
+	margin:0;
+  padding:0;
+  padding-right: 35px;
+  padding-top: 32px;
+  text-align: center;
+}
+
+#start_button {
+  background-color: #bbb;
+  padding: .5em;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 6px;
+  color: #fff;
+  display:block;
+  font-family: 'Oswald';
+  font-size: 20px;
+  text-decoration: none;
+  border: none;
+}
