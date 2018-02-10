@@ -30,13 +30,15 @@
     To begin, tell us your name.
 	</div>
 
-	<div class="name_box">
-    <input type="text" placeholder="First last"></input>
-	</div>
+  <form method="post" id="name_form">
+  	<div class="name_box">
+      <input name="user_name" type="text" placeholder="First last"></input>
+  	</div>
 
-	<div class="container">
-		<button id="start_button" onclick="location.href='onboard';">Let's do this</button>
-	</div>
+  	<div class="container">
+  		<input type="submit" id="start_button" value="Let's do this"></input>
+  	</div>
+  </form>
 
 </body>
 </html>

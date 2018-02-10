@@ -6,6 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   {% load static %}
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+crossorigin="anonymous"></script>
   <script type="text/javascript" src="{% static 'webapp/js/bootstrap.min.js' %}"></script>
   <link rel="stylesheet" href="{% static 'webapp/css/bootstrap-theme.min.css' %}">
   <link rel="stylesheet" href="{% static 'webapp/css/bootstrap.min.css' %}">
@@ -13,13 +16,14 @@
   <title>Welcome</title>
 </head>
 <body class="front_bg">
+   <form method="post">
 
     <div class="top-bar">
         <div class="top-bar-text">
             <a href='/'>Back</a>
         </div>
         <div class="top-bar-text">
-            <a href="onboard2">Next</a>
+            <input type="submit" value="Next"></input>
         </div>
     </div>
 
@@ -32,52 +36,41 @@
         <div id="height-form">
           <div class="form-group">
               <label>Gender</label>
-              <form>
-                <select class="minimal" name="Gender" placeholder="&nbsp">
+                <select class="minimal" name="gender" placeholder="&nbsp">
                   <option></option>
                   <option value="Male">Male</option>
                   <option value="Female">Female</option>
                 </select>
-              </form>
           </div>
         </div>
 
         <div id="height-form">
             <div class="form-group">
               <label>Height</label>
-              <form>
-                <input type="number" placeholder="Feet">
-              </form>
+                <input type="number" name="height_feet" placeholder="Feet">
             </div>
 
             <div class="form-group">
               <label>&nbsp</label>
-              <form>
-                <input type="number" placeholder="Inches">
-              </form>
+                <input type="number" name="height_inches" placeholder="Inches">
             </div>
         </div>
 
         <div id="height-form">
           <div class="form-group">
               <label>Hair Color</label>
-              <form>
-                <input type="text" placeholder="">
-              </form>
+                <input name="hair_color" type="text" placeholder="">
           </div>
         </div
 
         <div id="height-form">
           <div class="form-group">
               <label>Ethnicity</label>
-              <form>
-                <input type="text" placeholder="">
-              </form>
+                <input name="ethnicity" type="text" placeholder="">
           </div>
         </div>
 
-
     </div>
-
+  </form>
 </body>
 </html>
