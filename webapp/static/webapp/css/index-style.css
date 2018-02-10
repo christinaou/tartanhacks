@@ -1,71 +1,101 @@
-.name {
-	color: white;
-	font-size: 50px;
-  font-weight: normal;
-	margin:0;
-  padding:0;
-  padding-right: 35px;
-  padding-top: 32px;
-  text-align: center;
+@font-face {
+  font-family: 'Inversionz';
+  src: url('../fonts/Inversionz.otf');
 }
 
-.name_box {
-	border-bottom: 1px solid white;
-	color: gray;
-	font-size: 50px;
-  font-weight: normal;
-	margin:0;
-  padding:0;
-  padding-right: 35px;
-  padding-top: 32px;
-  text-align: center;
+.container {
+	justify-content: center;
+  position: fixed;
+  bottom: 50px;
+  width: 100%;
 }
 
 .front_bg{
 	background-size: contain;
 	background-repeat: no-repeat;
-	background-color: #191970;
+	background-color: #162955;
+	font-family: "Trebuchet MS";
 }
 
 .logo {
+	height: 80px;
 	color: white;
-	font-size: 80px;
-  font-weight: normal;
+	font-family: 'Inversionz';
+	font-size: 60px;
+  font-weight: lighter;
 	margin:0;
   padding:0;
-  padding-right: 35px;
-  padding-top: 32px;
+  padding-top: 15px;
   text-align: center;
 }
 
-.shield_img {
+.name {
+  color: white;
+  font-size: 18px;
+  font-weight: lighter;
+  margin-left: 90px;
+  padding:0;
+  padding-top: 100px;
+  text-align: left;
+}
+
+.name_box {
+  display: flex;
+  flex-direction: column;
+  outline:none;
+}
+
+.name_box input {
+  border: 0;
+  border-bottom: 1px solid white;
+  background-color: #162955;
+  margin-left: 90px;
+  margin-right: 90px;
+  padding: 0;
+  padding-top: 25px;
+  padding-bottom: 6px;
+  text-align: left;
+  font-size: 18px;
+  color: white;
+  outline:none;
+}
+
+.name_box input-placeholder {
+  color: gray;
+}
+
+.shield {
+	padding-top: 60px;
+}
+
+#shield_img {
+	height: 45px;
+  width: auto;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 40%;
 }
 
 .slogan {
 	color: white;
-	font-size: 50px;
-  font-weight: normal;
+	font-size: 18px;
+  font-weight: lighter;
 	margin:0;
   padding:0;
-  padding-right: 35px;
-  padding-top: 32px;
+  padding-top: 8px;
   text-align: center;
 }
 
 #start_button {
-  background-color: #bbb;
+  outline:none;
+	margin: 0 auto;
   padding: .5em;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  border-radius: 6px;
-  color: #fff;
-  display:block;
-  font-family: 'Oswald';
+  background-color: #9013FE;
+  color: white;
+  display: block;
   font-size: 20px;
   text-decoration: none;
   border: none;
+  width: 350px;
+  height: auto;
 }
