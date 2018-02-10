@@ -3,7 +3,7 @@ from os import path
 
 def main(audio_file):
     print("entering stt")
-    
+
     # use the audio file as the audio source
     r = sr.Recognizer()
     with sr.AudioFile(audio_file) as source:
@@ -53,7 +53,7 @@ def main(audio_file):
 
 #         endpoint = 'https://speech.platform.bing.com/recognize'
 #         request_id = uuid.uuid4()
-#         # Params form Microsoft Example 
+#         # Params form Microsoft Example
 #         params = {'scenarios': 'ulm',
 #                   'appid': 'D4D52672-91D7-4C74-8AD8-42B1D98141A5',
 #                   'locale': 'en-US',
@@ -72,11 +72,11 @@ def main(audio_file):
 #                         break
 #                     yield data
 
-#         headers = {'Authorization': 'Bearer ' + self.token, 
+#         headers = {'Authorization': 'Bearer ' + self.token,
 #                    'Content-Type': content_type}
-#         resp = requests.post(endpoint, 
-#                             params=params, 
-#                             data=stream_audio_file(speech_file), 
+#         resp = requests.post(endpoint,
+#                             params=params,
+#                             data=stream_audio_file(speech_file),
 #                             headers=headers)
 #         val = json.loads(resp.text)
 #         return val["results"][0]["name"], val["results"][0]["confidence"]
@@ -86,4 +86,4 @@ def main(audio_file):
 #     ms_asr.get_speech_token()
 #     text, confidence = ms_asr.transcribe(file_str)
 #     print("Text: ", text)
-#     print("Confidence: ", confidence) 
+#     print("Confidence: ", confidence)
