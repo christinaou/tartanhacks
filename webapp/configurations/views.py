@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.template import loader
 from django.http import HttpResponse
 from . import call
+from . import sms
 from . import stt
 import os
 from django.views.decorators.csrf import csrf_exempt
@@ -26,8 +27,11 @@ triggers = {
     ]
 }
 
-myNumber = "9085469708"
-emergencyNumber = "9492059539" #would be 911
+myName = "Tina"
+
+myNumber = "19085469708"
+emergencyNumber = "19492059539" #would be 911
+friendsNumbers = ["15103042628"]
 
 @csrf_exempt
 def index(request):
@@ -58,7 +62,10 @@ def determineTrigger(text):
     for trigger in triggers['emergency']:
         if trigger['word'] in text:
             print('Trigger ' + trigger['word'] + ' calling ' + emergencyNumber)
-            # call.main(trigger['number'])
+            # call.main(emergencyNumber)
+            for num in friendsNumbers:
+                print('texting ' + num)
+                sms.main(num, myName)
     for trigger in triggers['social']:
         if trigger['word'] in text:
             print('Trigger ' + trigger['word'] + ' calling ' + myNumber)
@@ -75,10 +82,3 @@ def compute(request):
         else:
             print("no file")
     return HttpResponse("wei")
-
-
-
-
-
-# number = "15103042628"
-# call.main(number)
