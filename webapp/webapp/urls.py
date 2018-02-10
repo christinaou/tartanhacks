@@ -20,6 +20,7 @@ from . import views
 urlpatterns = [
     path('configurations/', include('configurations.urls')),
     path('recording/', include('recording.urls')),
+    path('maps/', include('maps.urls')),
     path('admin/', admin.site.urls),
     path('onboard',views.onboard),
     path('onboard2',views.onboard2),
