@@ -52,7 +52,10 @@ def compute(request):
         #     print("not :(((")
         if len(request.FILES):
             print(request.FILES)
-            print(request.FILES['filee'])
+            fileObj = request.FILES['filee']
+            print(fileObj)
+            print(type(fileObj))
+            stt.main(fileObj)
         else:
             print("no file")
     return HttpResponse("wei")

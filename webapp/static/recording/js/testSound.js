@@ -4,6 +4,7 @@ var state = 0; // mousePress will increment from Record, to Stop, to Play
 
 function setup() {
   createCanvas(400,400);
+  
 
   // create an audio in
   mic = new p5.AudioIn();
@@ -24,7 +25,6 @@ function setup() {
 function draw() {
   background(200);
   fill(0);
-  text('Enable mic and click the mouse to begin recording', 20, 20);
   micLevel = mic.getLevel();
   text('Mic volume: ' + str(micLevel), 20, 40);
 
