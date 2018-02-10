@@ -76,6 +76,8 @@ h1 {
 }
 
 .form-group input {
+  -webkit-appearance: none;
+  border-radius: 0;
   border-color: black;
   border-width: 0 0 1px 0;
   font-family: TrebuchetMS;
