@@ -1,7 +1,26 @@
 
 
 <form method="post">
-    <label for="team_name">Enter name: </label>
-    <input id="team_name" type="text" name="name_field" value="Default name for team.">
+    <label for="trigger_word">Enter trigger word: </label>
+    <input type="text" name="trigger_word" value="">
+    <select name="trigger_type">
+      <option value="receive">Receive a call</option>
+      <option value="call">Make a call</option>
+    </select>
+    <label for="trigger_number">Enter number: </label>
+    <input type="text" name="trigger_number" value="">
     <input type="submit" value="OK">
 </form>
+
+<h3>Current triggers</h3>
+
+{% for trigger in triggers %}
+  <form method="post">
+    Trigger word: {{ trigger.word }} </br>
+    Trigger type: {{ trigger.type }} </br>
+    Number: {{trigger.number}} </br>
+    </br>
+    <input type="hidden" name="trigger_id" value={{trigger.id}}>
+    <input type="submit" value="Delete">
+  </form>
+{% endfor %}
