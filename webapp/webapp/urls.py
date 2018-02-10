@@ -23,5 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('onboard',views.onboard),
     path('onboard3',views.onboard3),
+    path('landing',views.landing),
     path('',views.index)
 ]
