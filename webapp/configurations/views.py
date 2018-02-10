@@ -6,6 +6,7 @@ from . import call
 from . import stt
 import os
 from django.views.decorators.csrf import csrf_exempt
+from dataview import DataView
 
 triggers = [
     {
@@ -38,12 +39,27 @@ def index(request):
     template = loader.get_template("configurations/index.html")
     return HttpResponse(template.render({'triggers':triggers}))
 
+@csrf_exempt
 def compute(request):
     if request.method == 'POST':
+        # print(request)
+        # print(request.POST)
+        # if "filee" in request.POST:
+        #     print("found!!!")
+        #     print(request.POST["filee"])
+        #     print(type(request.POST["filee"]))
+        # else:
+        #     print("not :(((")
         if len(request.FILES):
-            print(request.FILES[0])
+            print(request.FILES)
+            fileObj = request.FILES['filee']
+            print(fileObj)
+            print(type(fileObj))
+            stt.main(fileObj)
         else:
             print("no file")
+    return HttpResponse("wei")
+
 
 
 
