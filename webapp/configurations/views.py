@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.template import loader
 from django.http import HttpResponse
 from . import call
-from . import text
+from . import sms
 from . import stt
 import os
 from django.views.decorators.csrf import csrf_exempt
@@ -64,7 +64,8 @@ def determineTrigger(text):
             print('Trigger ' + trigger['word'] + ' calling ' + emergencyNumber)
             # call.main(emergencyNumber)
             for num in friendsNumbers:
-                text.main(num, myName)
+                print('texting ' + num)
+                sms.main(num, myName)
     for trigger in triggers['social']:
         if trigger['word'] in text:
             print('Trigger ' + trigger['word'] + ' calling ' + myNumber)
