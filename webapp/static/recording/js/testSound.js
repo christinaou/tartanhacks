@@ -10,9 +10,10 @@ var mic, recorder, soundFile;
 var state = 0; // mousePress will increment from Record, to Stop, to Play
 var timeSilent = 0;
 var noSoundTime = 2000;
+var micThreshold = .001;
 function setup() {
   createCanvas(400,400);
-
+  // frameRate(30);
   // create an audio in
   mic = new p5.AudioIn();
 
@@ -35,49 +36,61 @@ function draw() {
   micLevel = mic.getLevel();
   text('Mic volume: ' + str(micLevel), 20, 40);
 
-  if (micLevel > 0.001) {
+  if (micLevel > micThreshold) {
     fill(0,255,0);
   }
   rect(20,60,50,50);
 
   if (state == 0) {
     fill(0);
-    text('Just started. Click to start recording.', 20, 20);
+    text('Just started. Speak to start recording.', 20, 20);
+    if (mcLevel > micThreshold) {
+      recorder.record(soundFile);
+      state += 1;
+    }
   }
-  if (state == 1) {
+  else if (state == 1) {
     fill(0);
-    text('Recording now! Click to stop.', 20, 20);
+    text('No speech?', 20, 20);
     fill(255,0,0);
     ellipse(200,100,50,50);
-  } else if (state == 2) {
+    if (timeSilent > noSoundTime) {
+      state += 1;
+      timeSilent = 0;
+    }
+    timeSilent += 1;
+  } 
+  else if (state == 2) {
     fill(0);
-    text('Recording stopped. Click to play & save', 20, 20);
+    text('Sending!', 20, 20);
     fill(0,255,0);
     ellipse(200,100,50,50);
-  }
-}
-
-function touchStarted() {
-  // use the '.enabled' boolean to make sure user enabled the mic (otherwise we'd record silence)
-  if (state === 0 && mic.enabled) {
-    // Tell recorder to record to a p5.SoundFile which we will use for playback
-    recorder.record(soundFile);
-  }
-
-  else if (state === 1) {
-    recorder.stop(); // stop recorder, and send the result to soundFile
-  }
-
-  else if (state === 2) {
-    soundFile.play(); // play the result!
+    recorder.stop();
     var fileName = 'mySound.wav';
     postFile(soundFile, fileName);
+    soundFile = new p5.SoundFile();
+    state = (state + 1) % 3;
   }
 }
 
-function touchEnded() {
-  state = (state + 1) % 3;
-}
+// function touchStarted() {
+//   // use the '.enabled' boolean to make sure user enabled the mic (otherwise we'd record silence)
+//   if (state === 0 && mic.enabled) {
+//     // Tell recorder to record to a p5.SoundFile which we will use for playback
+//     recorder.record(soundFile);
+//   }
+
+//   else if (state === 1) {
+//     recorder.stop(); // stop recorder, and send the result to soundFile
+//   }
+
+//   else if (state === 2) {
+//     soundFile.play(); // play the result!
+//     var fileName = 'mySound.wav';
+//     postFile(soundFile, fileName);
+//   }
+// }
+
 
 function upload(postUrl, file) {
   var formData = new FormData();
