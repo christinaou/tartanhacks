@@ -20,3 +20,9 @@ def onboard3(request):
 def landing(request):
     template = loader.get_template("landing.html")
     return HttpResponse(template.render())
+def my_info(request):
+    template = loader.get_template("my_info.html")
+    return HttpResponse(template.render())
+def contacts(request):
+    template = loader.get_template("contacts.html")
+    return HttpResponse(template.render())

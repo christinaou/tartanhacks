@@ -25,5 +25,7 @@ urlpatterns = [
     path('onboard2',views.onboard2),
     path('onboard3',views.onboard3),
     path('landing',views.landing),
+    path('my_info',views.my_info),
+    path('contacts',views.contacts),
     path('',views.index)
 ]

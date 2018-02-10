@@ -47,7 +47,6 @@ h1 {
   letter-spacing: 0;
 }
 
-
 .subtitle {
   margin: 10% 0;
 }
@@ -65,7 +64,7 @@ h1 {
   font-size: 16px;
   -webkit-appearance: none;
   border-radius: 0;
-  border-width: 0 0 1px 0;  
+  border-width: 0 0 1px 0; 
 }
 
 .form-group {
@@ -80,11 +79,11 @@ h1 {
 }
 
 .form-group select {
-   -webkit-appearance: none;
-   border-radius: 0;
-   border-width: 0 0 1px 0;
-   border-color: black;
-   background-color: white;
+  -webkit-appearance: none;
+  border-radius: 0;
+  border-width: 0 0 1px 0;
+  border-color: black;
+  background-color: white;
 }
 
 .form-group form option {
