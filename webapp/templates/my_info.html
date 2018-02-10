@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   {% load static %}
-  <script type="text/javascript" src="{% static 'webapp/js/bootstrap.min.js' %}"></script>
+<!--   
+  <script type="text/javascript" src="{% static 'webapp/js/bootstrap.min.js' %}"></script> -->
   <link rel="stylesheet" href="{% static 'webapp/css/bootstrap-theme.min.css' %}">
   <link rel="stylesheet" href="{% static 'webapp/css/bootstrap.min.css' %}">
   <link rel="stylesheet" href="{% static 'webapp/css/my_info-style.css' %}">
@@ -30,11 +31,7 @@
           <div class="form-group">
               <label>Gender</label>
               <form>
-                <select class="minimal" name="Gender" placeholder="&nbsp">
-                  <option></option>
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                </select>
+                <input type="text" value={{gender}}>
               </form>
           </div>
         </div>
@@ -43,14 +40,14 @@
             <div class="form-group">
               <label>Height</label>
               <form>
-                <input type="number" placeholder="Feet">
+                <input type="number" value={{height_feet}}>
               </form>
             </div>
 
             <div class="form-group">
               <label>&nbsp</label>
               <form>
-                <input type="number" placeholder="Inches">
+                <input type="number" value={{height_inches}}>
               </form>
             </div>
         </div>
@@ -59,7 +56,7 @@
           <div class="form-group">
               <label>Hair Color</label>
               <form>
-                <input type="text" placeholder="">
+                <input type="text" value={{hair_color}}>
               </form>
           </div>
         </div
@@ -68,7 +65,7 @@
           <div class="form-group">
               <label>Ethnicity</label>
               <form>
-                <input type="text" placeholder="">
+                <input type="text" value={{ethnicity}}>
               </form>
           </div>
         </div>

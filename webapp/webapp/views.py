@@ -63,7 +63,12 @@ def landing(request):
     return HttpResponse(template.render())
 def my_info(request):
     template = loader.get_template("my_info.html")
-    return HttpResponse(template.render())
+    return HttpResponse(template.render(
+        {'height_feet': db['height_feet'], 
+        'height_inches': db['height_inches'], 
+        'ethnicity': db['ethnicity'],
+        'hair_color': db['hair_color'],
+        'gender': db['gender']}))
 def contacts(request):
     dirpath = os.path.dirname(os.path.realpath(__file__))
     with open(dirpath + '/../database.json') as src:
