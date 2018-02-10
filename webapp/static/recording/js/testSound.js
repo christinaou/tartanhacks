@@ -4,9 +4,6 @@ var state = 0; // mousePress will increment from Record, to Stop, to Play
 
 function setup() {
   createCanvas(400,400);
-  background(200);
-  fill(0);
-  text('Enable mic and click the mouse to begin recording', 20, 20);
 
   // create an audio in
   mic = new p5.AudioIn();
@@ -24,6 +21,14 @@ function setup() {
   soundFile = new p5.SoundFile();
 }
 
+function draw() {
+  background(200);
+  fill(0);
+  text('Enable mic and click the mouse to begin recording', 20, 20);
+  micLevel = mic.getLevel();
+  text('Mic volume: ' + str(micLevel), 20, 40);
+}
+
 function mousePressed() {
   // use the '.enabled' boolean to make sure user enabled the mic (otherwise we'd record silence)
   if (state === 0 && mic.enabled) {
@@ -33,7 +38,7 @@ function mousePressed() {
 
     background(255,0,0);
     text('Recording now! Click to stop.', 20, 20);
-    state++;
+    // state++;
   }
 
   else if (state === 1) {
@@ -41,12 +46,16 @@ function mousePressed() {
 
     background(0,255,0);
     text('Recording stopped. Click to play & save', 20, 20);
-    state++;
+    // state++;
   }
 
   else if (state === 2) {
     soundFile.play(); // play the result!
     saveSound(soundFile, 'mySound.wav'); // save file
-    state++;
+    // state++;
   }
+}
+
+function mouseReleased() {
+  state = (state + 1) % 3;
 }
