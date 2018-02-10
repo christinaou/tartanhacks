@@ -46,6 +46,8 @@
 }
 
 .name_box input {
+  -webkit-appearance: none;
+  border-radius: 0;
   border: 0;
   border-bottom: 1px solid white;
   background-color: #162955;

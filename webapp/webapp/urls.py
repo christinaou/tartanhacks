@@ -22,5 +22,8 @@ urlpatterns = [
     path('recording/', include('recording.urls')),
     path('admin/', admin.site.urls),
     path('onboard',views.onboard),
+    path('onboard2',views.onboard2),
+    path('onboard3',views.onboard3),
+    path('landing',views.landing),
     path('',views.index)
 ]

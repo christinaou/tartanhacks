@@ -6,7 +6,6 @@ from . import call
 from . import stt
 import os
 from django.views.decorators.csrf import csrf_exempt
-from dataview import DataView
 
 triggers = [
     {

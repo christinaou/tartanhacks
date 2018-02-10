@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  {% load static %}
+  <script type="text/javascript" src="{% static 'webapp/js/bootstrap.min.js' %}"></script>
+  <link rel="stylesheet" href="{% static 'webapp/css/bootstrap-theme.min.css' %}">
+  <link rel="stylesheet" href="{% static 'webapp/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'webapp/css/onboard3-style.css' %}">
+  <title>Welcome</title>
+</head>
+<body class="front_bg">
+    
+    <div class="top-bar">
+        <div class="top-bar-text">
+            <a href="onboard2">Back</a>
+        </div>
+        <div class="top-bar-text">
+            <a href="">Skip</a>
+        </div>
+    </div>
+
+
+    <div class="main-section">
+        <h1 class="heading">In case of emergency, we can also alert your loved ones.</h1>
+
+        <p class="desc subtitle">Example alert:</p>
+
+        <img id="alert_img", src="../static/webapp/imgs/alert.png">
+
+        <div class="form-group">
+            <label>Contact 1</label>
+            <input type="text" placeholder="Phone number"></input>
+        </div>
+
+        <div class="form-group">
+            <label>Contact 2</label>
+            <input type="text" placeholder="Phone number"></input>
+        </div>
+
+        <p class="add-another">Add another contact</p>
+
+    </div>
+
+</body>
+</html>

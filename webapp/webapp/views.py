@@ -11,3 +11,12 @@ def index(request):
 def onboard(request):
     template = loader.get_template("onboard.html")
     return HttpResponse(template.render())
+def onboard2(request):
+    template = loader.get_template("onboard2.html")
+    return HttpResponse(template.render())
+def onboard3(request):
+    template = loader.get_template("onboard3.html")
+    return HttpResponse(template.render())
+def landing(request):
+    template = loader.get_template("landing.html")
+    return HttpResponse(template.render())

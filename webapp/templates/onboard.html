@@ -13,13 +13,13 @@
   <title>Welcome</title>
 </head>
 <body class="front_bg">
-    
+
     <div class="top-bar">
         <div class="top-bar-text">
-            <a href="">Back</a>
+            <a href='/'>Back</a>
         </div>
         <div class="top-bar-text">
-            <a href="">Next</a>
+            <a href="onboard2">Next</a>
         </div>
     </div>
 
@@ -29,26 +29,51 @@
 
         <p class="desc subtitle">This information will be provided to the authorities in emergencies.</p>
 
-        <div class="form-group">
-            <label>Gender</label>
-            <form>
-              <select name="Gender">
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-              </select>
-            </form>
+        <div id="height-form">
+          <div class="form-group">
+              <label>Gender</label>
+              <form>
+                <select class="minimal" name="Gender" placeholder="&nbsp">
+                  <option></option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
+              </form>
+          </div>
         </div>
 
         <div id="height-form">
             <div class="form-group">
               <label>Height</label>
-              <input type="number">
+              <form>
+                <input type="number" placeholder="Feet">
+              </form>
             </div>
 
             <div class="form-group">
-              <label>Height</label>
-              <input type="number">
-            </div>          
+              <label>&nbsp</label>
+              <form>
+                <input type="number" placeholder="Inches">
+              </form>
+            </div>
+        </div>
+
+        <div id="height-form">
+          <div class="form-group">
+              <label>Hair Color</label>
+              <form>
+                <input type="text" placeholder="">
+              </form>
+          </div>
+        </div
+
+        <div id="height-form">
+          <div class="form-group">
+              <label>Ethnicity</label>
+              <form>
+                <input type="text" placeholder="">
+              </form>
+          </div>
         </div>
 
 
