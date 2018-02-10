@@ -41,7 +41,7 @@ h1 {
 
 .desc {
   font-family: TrebuchetMS-Bold;
-  font-size: 12px;
+  font-size: 16px;
   color: #9E9E9E;
   letter-spacing: 0;
 }
@@ -68,6 +68,7 @@ h1 {
   border-width: 0 0 1px 0;
   font-family: TrebuchetMS;
   font-size: 16px;
+
 }
 
 .form-group form {
