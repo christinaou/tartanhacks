@@ -6,9 +6,10 @@ def main(audio_file):
 
     # use the audio file as the audio source
     r = sr.Recognizer()
-    dir_path = os.path.dirname(os.path.realpath(__file__))
-    print(dir_path)
-    with sr.AudioFile(dir_path + "/" + audio_file) as source:
+    # dir_path = os.path.dirname(os.path.realpath(__file__))
+    # print(dir_path)
+    # with sr.AudioFile(dir_path + "/" + audio_file) as source:
+    with sr.AudioFile(audio_file) as source:
         audio = r.record(source)  # read the entire audio file
     try:
         print("Google Voice Recognition thinks you said " + r.recognize_google(audio))
