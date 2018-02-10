@@ -1,39 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  {% load static %}
+  <script type="text/javascript" src="{% static 'webapp/js/bootstrap.min.js' %}"></script>
+  <link rel="stylesheet" href="{% static 'webapp/css/bootstrap-theme.min.css' %}">
+  <link rel="stylesheet" href="{% static 'webapp/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'webapp/css/onboard2-style.css' %}">
+  <title>Welcome</title>
+</head>
 
 
-<form method="post">
-    <label for="trigger_word">Enter trigger word: </label>
-    <input type="hidden" name="trigger_type" value="emergency">
-    <input type="text" name="trigger_word" value="">
-    <input type="submit" value="OK">
-</form>
 
-<h3>Current triggers for emergency</h3>
+<body class="front_bg">
+    
+    <div class="top-bar">
+        <div class="top-bar-text">
+            <a href="../onboard">Back</a>
+        </div>
 
-{% for trigger in triggers.emergency %}
-  <form method="post">
-    Trigger word: {{ trigger.word }} </br>
-    </br>
-    <input type="hidden" name="trigger_id" value={{trigger.id}}>
-    <input type="hidden" name="trigger_type" value="emergency">
-    <input type="submit" value="Delete">
-  </form>
-{% endfor %}
+        <a id="home-link" href="../landing">Home</a>
 
-<form method="post">
-    <label for="trigger_word">Enter trigger word: </label>
-    <input type="hidden" name="trigger_type" value="social">
-    <input type="text" name="trigger_word" value="">
-    <input type="submit" value="OK">
-</form>
+        <div class="top-bar-text">
+            <a href="../onboard3">Next</a>
+        </div>
+    </div>
 
-<h3>Current triggers for social</h3>
 
-{% for trigger in triggers.social %}
-  <form method="post">
-    Trigger word: {{ trigger.word }} </br>
-    </br>
-    <input type="hidden" name="trigger_id" value={{trigger.id}}>
-    <input type="hidden" name="trigger_type" value="social">
-    <input type="submit" value="Delete">
-  </form>
-{% endfor %}
+    <div class="main-section">
+        <h1 class="heading">Customize your voice triggers.</h1>
+        <h2 class="sub-heading">Emergency</h2>
+        <div class="indented">
+          <p class="desc subtitle">Equerry will alert the police with your info and location when trigerred with these phrases.</p>
+
+            {% for trigger in triggers.emergency %}
+              <form method="post" class="form-group">
+                <label>Phrase</label>
+                <input type="hidden" name="trigger_id" value={{trigger.id}}>
+                <input type="hidden" name="trigger_type" value="emergency">
+                <div class="phrase-button-container">
+                    <p class="phrase-text">{{ trigger.word }}</p>
+                    <button class="input-button" type="submit" value="Delete">X</button>
+                </div>
+              </form>
+            {% endfor %}
+
+          <form method="post" class="form-group">
+              <label class="new-phrase-text" for="trigger_word">New Phrase</label>
+                <input type="hidden" name="trigger_type" value="emergency">
+                <input type="text" name="trigger_word" placeholder="Is that a gun?" value="">
+                <button type="submit" value="OK" class="add-another">+</button>
+          </form>
+
+
+        </div>
+
+        <p class="space"></p>
+
+        <h2 class="sub-heading">Abort Social Situation</h2>
+        
+
+        <div class="indented">
+          <p class="desc subtitle">Equerry will call you when triggered with these phrases, giving you an excuse to leave any awkward situation.</p>
+          
+
+            {% for trigger in triggers.social %}
+              <form method="post" class="form-group">
+                <label>Phrase</label>
+                <input type="hidden" name="trigger_id" value={{trigger.id}}>
+                <input type="hidden" name="trigger_type" value="social">
+                <div class="phrase-button-container">
+                    <p class="phrase-text">{{ trigger.word }}</p>
+                    <button class="input-button" type="submit" value="Delete">X</button>
+                </div>
+              </form>
+            {% endfor %}
+
+
+
+          <form method="post" class="form-group">
+              <label class="new-phrase-text" for="trigger_word">New Phrase</label>
+                <input type="hidden" name="trigger_type" value="social">
+                <input type="text" name="trigger_word" placeholder="Sorry, I have a boyfriend" value="">
+                <button type="submit" value="OK" class="add-another">+</button>
+          </form>
+
+
+        </div>
+        
+
+    </div>
+
+</body>
+</html>
+
+

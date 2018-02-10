@@ -95,7 +95,7 @@ h2 {
 .form-group input {
   -webkit-appearance: none;
   border-radius: 0;
-  border-color: black;
+  border-color: #9013FE;
   border-width: 0 0 1px 0;
   font-family: TrebuchetMS;
   font-size: 16px;
@@ -132,4 +132,34 @@ form select {
   color: #9013FE;
   font-size: 16px;
   text-align: center;
+}
+
+.phrase-text {
+  font-family: TrebuchetMS;
+  font-size: 16px;
+}
+
+.input-button {
+  background-color: transparent;
+  -webkit-appearance: none;
+  border-radius: 100%;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  outline: none;
+}
+
+.phrase-button-container {
+  display: flex;
+  justify-content: space-between;
+  border-color: #AEB6BF;
+  border-style: solid;
+  border-width: 0 0 1px 0;
+}
+
+.new-phrase-text {
+}
+
+#home-link {
+  color: #162955;
 }
