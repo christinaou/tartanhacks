@@ -1,19 +1,19 @@
 import speech_recognition as sr
-from os import path
-
+import os
+import json
 def main(audio_file):
     print("entering stt")
 
     # use the audio file as the audio source
     r = sr.Recognizer()
-    with sr.AudioFile(audio_file) as source:
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    print(dir_path)
+    with sr.AudioFile(dir_path + "/" + audio_file) as source:
         audio = r.record(source)  # read the entire audio file
-
-    BING_KEY = "d442169fa53b4cc8b1ab33371a42466e"  # Microsoft Bing Voice Recognition API keys 32-character lowercase hexadecimal strings
     try:
-        print("Microsoft Bing Voice Recognition thinks you said " + r.recognize_bing(audio, key=BING_KEY))
+        print("Google Voice Recognition thinks you said " + r.recognize_google(audio))
     except sr.UnknownValueError:
-        print("Microsoft Bing Voice Recognition could not understand audio")
+        print("Google Voice Recognition could not understand audio")
     except sr.RequestError as e:
         print("Could not request results from Microsoft Bing Voice Recognition service; {0}".format(e))
 

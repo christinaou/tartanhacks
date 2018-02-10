@@ -18,7 +18,6 @@ triggers = [
 
 @csrf_exempt
 def index(request):
-
     if request.method=="POST":
         # Delete trigger lol
         if "trigger_id" in request.POST:
@@ -26,9 +25,7 @@ def index(request):
             triggers.pop(int(trigger_id))
         # Add trigger
         else:
-
-
-            stt.main("../test/Sample.wav")
+            # stt.main("../test/Sample.wav")
             number = request.POST["trigger_number"]
             word = request.POST['trigger_word']
             trigger_type = request.POST['trigger_type']
@@ -40,6 +37,15 @@ def index(request):
             })
     template = loader.get_template("configurations/index.html")
     return HttpResponse(template.render({'triggers':triggers}))
+
+def compute(request):
+    if request.method == 'POST':
+        if len(request.FILES):
+            print(request.FILES[0])
+        else:
+            print("no file")
+
+
 
 
 # number = "15103042628"

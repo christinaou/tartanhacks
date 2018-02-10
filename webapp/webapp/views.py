@@ -8,3 +8,6 @@ from django.template import loader
 def index(request):
     template = loader.get_template("index.html")
     return HttpResponse(template.render())
+def onboard(request):
+    template = loader.get_template("onboard.html")
+    return HttpResponse(template.render())
