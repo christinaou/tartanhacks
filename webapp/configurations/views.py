@@ -7,28 +7,27 @@ from . import stt
 import os
 from django.views.decorators.csrf import csrf_exempt
 
-triggers = [
-    {
-        'number': "9492059539",
-        'word': "apple",
-        'type': "call",
-        'id':0
-    },
-    {
-        'number': "9492059539",
-        'word': "i have a boyfriend",
-        'type': "call",
-        'id':0
-    },
-    {
-        'number': None,
-        'word': "blackberry",
-        'type': "receive",
-        'id':1
-    }
-]
+triggers = {
+    'emergency':[
+        {
+            'word': "apple",
+            'id':0
+        },
+        {
+            'word': "someone please help me",
+            'id':1
+        }
+    ],
+    'social':[
+        {
+            'word': "i miss my hamster",
+            'id':0
+        }
+    ]
+}
 
 myNumber = "9085469708"
+emergencyNumber = "9492059539" #would be 911
 
 @csrf_exempt
 def index(request):
@@ -36,18 +35,19 @@ def index(request):
         # Delete trigger lol
         if "trigger_id" in request.POST:
             trigger_id = request.POST["trigger_id"]
-            triggers.pop(int(trigger_id))
+            trigger_type = request.POST["trigger_type"]
+            triggers[trigger_type].pop(int(trigger_id))
+            for x in range(int(trigger_id),len(triggers[trigger_type])):
+                triggers[trigger_type][x]['id'] = triggers[trigger_type][x]['id'] - 1
+
         # Add trigger
         else:
             # stt.main("../test/Sample.wav")
-            number = request.POST["trigger_number"]
             word = request.POST['trigger_word']
             trigger_type = request.POST['trigger_type']
-            triggers.append({
-                'number':number,
+            triggers[trigger_type].append({
                 'word': word,
-                'type': trigger_type,
-                'id': len(triggers)
+                'id': len(triggers[trigger_type])
             })
             print("Added trigger, so triggers: ",end="")
             print(triggers)
@@ -55,14 +55,14 @@ def index(request):
     return HttpResponse(template.render({'triggers':triggers}))
 
 def determineTrigger(text):
-    for trigger in triggers:
+    for trigger in triggers['emergency']:
         if trigger['word'] in text:
-            if trigger['type'] == 'call':
-                print('Trigger ' + trigger['word'] + ' calling ' + trigger['number'])
-                # call.main(trigger['number'])
-            elif trigger['type'] == 'receive':
-                print('Trigger ' + trigger['word'] + ' receiving to ' + myNumber)
-                # call.main(myNumber)
+            print('Trigger ' + trigger['word'] + ' calling ' + emergencyNumber)
+            # call.main(trigger['number'])
+    for trigger in triggers['social']:
+        if trigger['word'] in text:
+            print('Trigger ' + trigger['word'] + ' calling ' + myNumber)
+            # call.main(myNumber)
 
 @csrf_exempt
 def compute(request):
