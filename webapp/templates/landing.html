@@ -10,13 +10,9 @@
   <link rel="stylesheet" href="{% static 'webapp/css/bootstrap-theme.min.css' %}">
   <link rel="stylesheet" href="{% static 'webapp/css/bootstrap.min.css' %}">
   <link rel="stylesheet" href="{% static 'webapp/css/landing-style.css' %}">
-  <title>Index</title>
+  <title>Equerry</title>
 </head>
 <body class="front_bg">
-
-    <div class="shield">
-    <img id="shield_img", src="../static/webapp/imgs/shield.svg">
-  </div>
 
   <div class="logo">
     EQUERRY
@@ -26,16 +22,18 @@
     Safety is a walk away.
     </div>
 
-    <div class="name">
-    To begin, tell us your name.
+    <div class="shield">
+      <img id="shield_img", src="../static/webapp/imgs/shield-check.svg">
     </div>
 
-    <div class="name_box">
-    <input type="text" placeholder="First last"></input>
+    <div class="active-text">
+      <p>Your Equerry is Active.</p>
     </div>
 
-    <div class="container">
-        <button id="start_button">Let's do this</button>
+    <div class="button-container">
+        <button id="start_button">My Info</button>
+        <button id="start_button">Voice Triggers</button>
+        <button id="start_button">Emergency Contacts</button>
     </div>
 
 </body>
