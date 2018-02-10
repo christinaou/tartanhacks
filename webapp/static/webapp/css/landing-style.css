@@ -4,9 +4,9 @@
 }
 
 .button-container {
-	display: flex;
+  display: flex;
   flex-direction: column;
-  margin: 15% 0;
+  margin: 3% 0;
   width: 100%;
 }
 
@@ -16,19 +16,19 @@
 
 
 .front_bg{
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-color: #162955;
-	font-family: "Trebuchet MS";
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: #162955;
+  font-family: "Trebuchet MS";
 }
 
 .logo {
-	height: 80px;
-	color: white;
-	font-family: 'Inversionz';
-	font-size: 60px;
+  height: 80px;
+  color: white;
+  font-family: 'Inversionz';
+  font-size: 60px;
   font-weight: lighter;
-	margin:0;
+  margin:0;
   padding:0;
   padding-top: 15px;
   text-align: center;
@@ -72,11 +72,11 @@
 }
 
 .shield {
-	padding-top: 60px;
+  padding-top: 60px;
 }
 
 #shield_img {
-	height: 40vw;
+  height: 40vw;
   width: auto;
   display: block;
   margin-left: auto;
@@ -84,10 +84,10 @@
 }
 
 .slogan {
-	color: white;
-	font-size: 18px;
+  color: white;
+  font-size: 18px;
   font-weight: lighter;
-	margin:0;
+  margin:0;
   padding:0;
   padding-top: 8px;
   text-align: center;
@@ -102,4 +102,17 @@
   font-size: 20px;
   text-decoration: none;
   border: none;
+}
+
+#start_button2 {
+  outline:none;
+  padding: .5em;
+  color: white;
+  background-color: #162955;
+  display: block;
+  font-size: 20px;
+  text-decoration: none;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #9013FE;
 }
