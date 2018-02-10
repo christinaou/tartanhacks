@@ -59,6 +59,16 @@ h1 {
   margin: 0 0 5px 0;
 }
 
+<<<<<<< HEAD
+.form-group input {
+  border-color: black;
+  font-family: TrebuchetMS;
+  font-size: 16px;
+  -webkit-appearance: none;
+  border-radius: 0;
+  border-width: 0 0 1px 0;  
+=======
+>>>>>>> master
 
 .form-group {
   display: flex;
@@ -66,9 +76,16 @@ h1 {
   margin: 5% 0;
   border-color: black;
   border-style: solid;
-  border-width: 0 0 1px 0;
+  border-width: 0;
   font-family: TrebuchetMS;
   font-size: 16px;
+}
+
+.form-group select {
+   -webkit-appearance: none;
+   border-radius: 0;
+   border-width: 0 0 1px 0;
+   border-color: black;
 }
 
 .form-group form option {

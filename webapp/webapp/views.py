@@ -17,3 +17,6 @@ def onboard2(request):
 def onboard3(request):
     template = loader.get_template("onboard3.html")
     return HttpResponse(template.render())
+def landing(request):
+    template = loader.get_template("landing.html")
+    return HttpResponse(template.render())
