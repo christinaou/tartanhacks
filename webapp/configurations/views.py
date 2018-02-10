@@ -44,18 +44,18 @@ def index(request):
     print(db['myName'])
     return HttpResponse(template.render({'triggers':db['triggers']}))
 
-def determineTrigger(text):
+def determineTrigger(text,db):
     for trigger in db['triggers']['emergency']:
-        if trigger['word'] in text:
+        if str.lower(trigger['word']) in text:
             print('Trigger ' + trigger['word'] + ' calling ' + db['emergencyNumber'])
-            call.main(emergencyNumber)
-            for num in friendsNumbers:
+            call.main(db['emergencyNumber'])
+            for num in db['friendsNumbers']:
                 print('texting ' + num)
                 sms.main(num, db['myName'])
     for trigger in db['triggers']['social']:
-        if trigger['word'] in text:
+        if str.lower(trigger['word']) in text:
             print('Trigger ' + trigger['word'] + ' calling ' + db['myNumber'])
-            call.main(myNumber)
+            call.main(db['myNumber'])
 
 @csrf_exempt
 def compute(request):
@@ -68,7 +68,7 @@ def compute(request):
             fileObj = request.FILES['filee']
             text = stt.main(fileObj)
             if (text):
-                determineTrigger(text)
+                determineTrigger(text,db)
         else:
             print("no file")
     return HttpResponse("wei")
